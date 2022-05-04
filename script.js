@@ -4,7 +4,7 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
-const ticketPrice = parseInt(movieSelect.value);
+let ticketPrice = parseInt(movieSelect.value);
 
 // Update total and count
 function updateSelectedCount() {
@@ -15,6 +15,12 @@ function updateSelectedCount() {
 }
 
 
+// Movie select event
+movieSelect.addEventListener('change', (e) => {
+  ticketPrice = parseInt(e.target.value);
+  updateSelectedCount();
+});
+
 // Seat Click Event
 container.addEventListener('click', (e) => {
   if (e.target.classList.contains('seat') && !e.target.classList.contains('occupied')) {
@@ -22,4 +28,4 @@ container.addEventListener('click', (e) => {
 
     updateSelectedCount();
   }
-})
+});
